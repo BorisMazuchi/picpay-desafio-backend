@@ -16,6 +16,17 @@ public class Cliente {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private Saldo saldo;
+
+    public Saldo getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Saldo saldo) {
+        this.saldo = saldo;
+    }
+
     public String getCpf_cnpj() {
         return cpf_cnpj;
     }

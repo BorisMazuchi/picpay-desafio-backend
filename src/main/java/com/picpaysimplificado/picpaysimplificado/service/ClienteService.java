@@ -20,7 +20,7 @@ public class ClienteService {
     public ClienteDto createCliente(ClienteDto clienteDto) {
         Cliente cliente = new Cliente();
 
-        if (DocumentValidator.isCPF(clienteDto.getCpf_cnpj()) || DocumentValidator.isCNPJ(clienteDto.getCpf_cnpj())) {
+        if (DocumentValidator.isCPFOrCNPJ(clienteDto.getCpf_cnpj())) {
             cliente.setNomeCompleto(clienteDto.getNomeCompleto());
             cliente.setEmail(clienteDto.getEmail());
             cliente.setCpf_cnpj(clienteDto.getCpf_cnpj());

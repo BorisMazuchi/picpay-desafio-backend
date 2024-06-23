@@ -1,5 +1,6 @@
 package com.picpaysimplificado.picpaysimplificado.dto;
 
+import com.picpaysimplificado.picpaysimplificado.entity.Saldo;
 import com.picpaysimplificado.picpaysimplificado.enums.TipoUsuario;
 
 public class ClienteDto {
@@ -9,6 +10,15 @@ public class ClienteDto {
     private String email;
     private String senha;
     private TipoUsuario tipoUsuario;
+    private Saldo saldo;
+
+    public Saldo getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Saldo saldo) {
+        this.saldo = saldo;
+    }
 
     public Long getIdCliente() {
         return idCliente;

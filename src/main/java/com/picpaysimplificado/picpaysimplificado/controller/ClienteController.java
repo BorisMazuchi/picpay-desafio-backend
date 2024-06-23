@@ -2,6 +2,7 @@ package com.picpaysimplificado.picpaysimplificado.controller;
 
 import com.picpaysimplificado.picpaysimplificado.dto.ClienteDto;
 import com.picpaysimplificado.picpaysimplificado.service.ClienteService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,13 @@ public class ClienteController {
     ClienteService clienteService;
 
     @PostMapping
-    public ClienteDto createCliente(@RequestBody ClienteDto clienteDto) {
-        return clienteService.createCliente(clienteDto);
+    public ResponseEntity<ClienteDto> createCliente(@RequestBody ClienteDto clienteDto) {
+        ClienteDto clienteCriado = clienteService.createCliente(clienteDto);
+        if (clienteCriado.getIdCliente() != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(clienteCriado);
+        }else{
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping
